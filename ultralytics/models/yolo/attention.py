@@ -1,5 +1,5 @@
-import torch
 import torch.nn as nn
+
 
 class SEBlock(nn.Module):
     def __init__(self, channels, reduction=16):
@@ -9,7 +9,7 @@ class SEBlock(nn.Module):
             nn.Linear(channels, channels // reduction, bias=False),
             nn.ReLU(inplace=True),
             nn.Linear(channels // reduction, channels, bias=False),
-            nn.Sigmoid()
+            nn.Sigmoid(),
         )
 
     def forward(self, x):
